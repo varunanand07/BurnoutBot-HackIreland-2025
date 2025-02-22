@@ -4,6 +4,63 @@ import { oauth2Client } from "../api/auth.js";
 
 const calendar = google.calendar({ version: "v3", auth: oauth2Client });
 
+
+
+// Route to add an event to a specific calendar
+export const createEventSpecific = async (req, res) => {
+    const { calendarId } = req.params;
+    const { summary, location, description, start, end } = req.body;
+    
+    if (!summary || !start || !end) {
+        return res.status(400).json({ success: false, message: 'Missing required fields: summary, start, or end' });
+    }
+    
+    const event = {
+        summary,
+        location,
+        description,
+        start: { dateTime: start, timeZone: 'UTC' },
+        end: { dateTime: end, timeZone: 'UTC' },
+    };
+    
+    try {
+        const response = await calendar.events.insert({
+            calendarId,
+            resource: event,
+        });
+        res.status(201).json({ success: true, event: response.data });
+    } catch (error) {
+        console.error('Error adding event:', error);
+        res.status(500).json({ success: false, message: 'Failed to add event' });
+    }
+};
+
+// Route to remove an event from a specific calendar
+export const deleteEventSpecific = async (req, res) => {
+    const { calendarId, eventId } = req.params;
+    
+    try {
+        await calendar.events.delete({
+            calendarId,
+            eventId,
+        });
+        res.json({ success: true, message: 'Event deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting event:', error);
+        res.status(500).json({ success: false, message: 'Failed to delete event' });
+    }
+};
+
+// Route to fetch user's calendars
+export const getAllCalendars = async (req, res) => {
+    try {
+        const response = await calendar.calendarList.list();
+        res.json(response.data.items);
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Failed to fetch calendars' });
+    }
+};
+
 export const getAllEvents = async (req, res) => {
     try {
         const calendarListResponse = await calendar.calendarList.list();
