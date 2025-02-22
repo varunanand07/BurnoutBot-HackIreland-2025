@@ -12,6 +12,8 @@ console.log(`Server running on port ${PORT}`);
 
 server.use(express.json());
 
+server.use(express.urlencoded({ extended: true }));
+
 server.use('/auth', authRoutes);
 server.use('/calendar', calendarRoutes);
 
