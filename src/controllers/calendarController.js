@@ -5,6 +5,35 @@ import { oauth2Client } from "../api/auth.js";
 const calendar = google.calendar({ version: "v3", auth: oauth2Client });
 
 
+export const getEventsSpecific = async (req, res) => {
+    const { calendarId } = req.params;
+    
+    try {
+        const eventsResponse = await calendar.events.list({
+            calendarId,
+            timeMin: new Date().toISOString(),
+            maxResults: 50,
+            singleEvents: true,
+            orderBy: 'startTime',
+        });
+
+        const events = eventsResponse.data.items.map(event => ({
+            id: event.id,
+            title: event.summary,
+            start: event.start.dateTime || event.start.date,
+            end: event.end.dateTime || event.end.date,
+            location: event.location || 'N/A',
+            description: event.description || 'No description',
+        }));
+
+        res.json({ success: true, events });
+    } catch (error) {
+        console.error(`Error fetching events for calendar ${calendarId}:`, error);
+        res.status(500).json({ success: false, message: 'Failed to fetch events from the specified calendar' });
+    }
+};
+
+
 
 // Route to add an event to a specific calendar
 export const createEventSpecific = async (req, res) => {
