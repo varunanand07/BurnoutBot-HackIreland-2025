@@ -1,18 +1,13 @@
-import express from 'express';
-import { google } from 'googleapis';
-import dotenv from 'dotenv';
-
-dotenv.config();
+import express from "express";
+import { getAllEvents, createEvent } from "../controllers/calendarController.js";
+import checkAuth from "../middleware/checkAuth.js";
 
 const router = express.Router();
 
-// OAuth2 Client for user authentication
-const oauth2Client = new google.auth.OAuth2(
-    process.env.GOOGLE_CLIENT_ID,
-    process.env.GOOGLE_CLIENT_SECRET,
-    process.env.GOOGLE_REDIRECT_URI
-);
+router.get("/events/all", checkAuth, getAllEvents);
+router.post("/events/create", checkAuth, createEvent);
 
+<<<<<<< HEAD
 // Middleware to check authentication token
 const checkAuth = (req, res, next) => {
     const accessToken = req.headers.authorization?.split(' ')[1]; // Expecting "Bearer <token>"
@@ -130,3 +125,6 @@ router.delete('/events/:calendarId/:eventId', checkAuth, async (req, res) => {
 });
 
 export default router;
+=======
+export default router;
+>>>>>>> ecd19995dcbebd6d3df1125a967fb87c1bfd934b

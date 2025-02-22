@@ -1,16 +1,10 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import { google } from 'googleapis';
-
-dotenv.config();
+import express from "express";
+import { googleAuth, googleCallback } from "../controllers/authController.js";
 
 const router = express.Router();
 
-const oauth2Client = new google.auth.OAuth2(
-    process.env.GOOGLE_CLIENT_ID,
-    process.env.GOOGLE_CLIENT_SECRET,
-    process.env.GOOGLE_REDIRECT_URI
-);
+router.get("/google", googleAuth);
+router.get("/google/callback", googleCallback);
 
 // Route to generate Google authentication URL
 router.get('/google', (req, res) => {
