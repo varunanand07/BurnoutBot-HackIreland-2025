@@ -1,6 +1,7 @@
 // src/controllers/calendarController.js
 import { google } from "googleapis";
 import { oauth2Client } from "../api/auth.js";
+import moment from 'moment-timezone';
 
 const calendar = google.calendar({ version: "v3", auth: oauth2Client });
 
@@ -161,5 +162,47 @@ export const createEvent = async (req, res) => {
     } catch (error) {
         console.error("Error creating event:", error);
         res.status(500).json({ success: false, message: "Failed to create event" });
+    }
+};
+
+
+export const getTimeInEventsPerDay = async (req, res) => {
+    const { calendarId, day } = req.params;
+    
+    try {
+        // Ensure day is a valid weekday name
+        const weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+        const dayIndex = weekdays.indexOf(day.toLowerCase());
+        
+        if (dayIndex === -1) {
+            return res.status(400).json({ success: false, message: 'Invalid day parameter. Use full weekday names (e.g., Monday, Tuesday).' });
+        }
+
+        // Get the start and end time of the requested day in the current week
+        const referenceDate = moment().startOf('week').add(dayIndex, 'days');
+        const startOfDay = referenceDate.startOf('day').toISOString();
+        const endOfDay = referenceDate.endOf('day').toISOString();
+
+        const eventsResponse = await calendar.events.list({
+            calendarId,
+            timeMin: startOfDay,
+            timeMax: endOfDay,
+            singleEvents: true,
+            orderBy: 'startTime',
+        });
+
+        let totalMinutes = 0;
+        eventsResponse.data.items.forEach(event => {
+            if (event.start?.dateTime && event.end?.dateTime) {
+                const startTime = new Date(event.start.dateTime);
+                const endTime = new Date(event.end.dateTime);
+                totalMinutes += (endTime - startTime) / 60000; // Convert ms to minutes
+            }
+        });
+
+        res.json({ success: true, totalMinutes });
+    } catch (error) {
+        console.error(`Error calculating total event time for calendar ${calendarId} on ${day}:`, error);
+        res.status(500).json({ success: false, message: 'Failed to calculate total event time' });
     }
 };
