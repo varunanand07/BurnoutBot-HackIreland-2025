@@ -1,0 +1,39 @@
+display_information:
+  name: Meeting Optimizer
+  description: AI-powered meeting optimization and scheduling
+  background_color: "#2c2d30"
+
+features:
+  bot_user:
+    display_name: Meeting Optimizer
+    always_online: true
+
+oauth_config:
+  scopes:
+    bot:
+      - commands
+      - chat:write
+      - im:history
+      - im:write
+      - calendar:read
+      - calendar:write
+
+commands:
+  - command: /meeting-summary
+    description: Get an AI-generated summary of your latest meeting
+    usage_hint: "/meeting-summary"
+  - command: /calendar-health
+    description: Get a detailed health report of your calendar
+    usage_hint: "/calendar-health"
+  - command: /optimize-meetings
+    description: Get smart recommendations for optimizing your meetings
+    usage_hint: "/optimize-meetings"
+  - command: /team-workload
+    description: Analyze team meeting workload
+    usage_hint: "[optional: email1 email2 ...]"
+  - command: /team-availability
+    description: Find optimal meeting times for the team
+    usage_hint: "[optional: email1 email2 ...]"
+  - command: /team-availability
+    description: Find optimal meeting times for the team
+    usage_hint: "[optional: email1 email2 ...]"

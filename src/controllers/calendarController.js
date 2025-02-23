@@ -8,7 +8,7 @@ dotenv.config();
 
 const calendar = google.calendar({ version: "v3", auth: oauth2Client });
 
-//OpenAI key needs to be added
+// Initialize OpenAI with your API key
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
 });
@@ -151,10 +151,16 @@ export const createEvent = async (req, res) => {
         const event = {
             summary,
             location: location || "Online",
-            description: description || "No description",
-            start: { dateTime: startTime, timeZone: "Asia/Kolkata" },
-            end: { dateTime: endTime, timeZone: "Asia/Kolkata" },
-            attendees: attendees?.map(email => ({ email })) || [],
+            description,
+            start: {
+                dateTime: startTime,
+                timeZone: "UTC"
+            },
+            end: {
+                dateTime: endTime,
+                timeZone: "UTC"
+            },
+            attendees: attendees?.map(email => ({ email })) || []
         };
 
         const response = await calendar.events.insert({
