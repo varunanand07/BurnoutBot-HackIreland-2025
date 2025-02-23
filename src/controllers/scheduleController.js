@@ -83,4 +83,80 @@ const scheduleMeeting = async (req, res) => {
     }
 };
 
+const scheduleMeeting2 = async (req,res) => {
+    const { calendarId } = req.params;  // Calendar ID from URL
+    const { summary, description, startTime, endTime, attendees, location } = req.body;  // Meeting details
+
+    // Validate input
+    if (!summary || !startTime || !endTime) {
+        return res.status(400).json({ success: false, message: "Missing required fields: summary, startTime, endTime" });
+    }
+
+    const event = {
+        summary,
+        location: location || "Online",
+        description: description || "No description",
+        start: { dateTime: startTime, timeZone: "UTC" },
+        end: { dateTime: endTime, timeZone: "UTC" },
+        attendees: attendees?.map(email => ({ email })) || [],
+        reminders: {
+            useDefault: false,
+            overrides: [
+                { method: "email", minutes: 30 },
+                { method: "popup", minutes: 10 },
+            ],
+        },
+    };
+
+    try {
+        const response = await calendar.events.insert({
+            calendarId,
+            resource: event,
+        });
+
+        res.status(201).json({ success: true, message: "Meeting scheduled successfully!", event: response.data });
+
+    } catch (error) {
+        console.error("Error scheduling meeting:", error);
+        res.status(500).json({ success: false, message: "Failed to schedule meeting" });
+    }
+}
+
+const rescheduleMeeting = async (req,res) => {
+    const { calendarId, eventId } = req.params;
+    const { newStart, newEnd } = req.body;
+
+    // Validate input
+    if (!newStart || !newEnd) {
+        return res.status(400).json({ success: false, message: "Missing required fields: newStart, newEnd" });
+    }
+
+    try {
+        // Fetch the existing event
+        const eventResponse = await calendar.events.get({
+            calendarId,
+            eventId,
+        });
+
+        const event = eventResponse.data;
+
+        // Update event start and end times
+        event.start = { dateTime: newStart, timeZone: "UTC" };
+        event.end = { dateTime: newEnd, timeZone: "UTC" };
+
+        // Send the update request
+        const updatedEvent = await calendar.events.update({
+            calendarId,
+            eventId,
+            resource: event,
+        });
+
+        res.json({ success: true, message: "Meeting rescheduled successfully!", event: updatedEvent.data });
+
+    } catch (error) {
+        console.error("Error rescheduling event:", error);
+        res.status(500).json({ success: false, message: "Failed to reschedule event" });
+    }
+}
+
 export { scheduleMeeting };

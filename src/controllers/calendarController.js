@@ -1,9 +1,16 @@
 import { google } from "googleapis";
 import { oauth2Client } from "../api/auth.js";
 import moment from 'moment-timezone';
+import OpenAI from "openai";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const calendar = google.calendar({ version: "v3", auth: oauth2Client });
 
+const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+});
 
 export const getEventsSpecific = async (req, res) => {
     const { calendarId } = req.params;
@@ -32,8 +39,6 @@ export const getEventsSpecific = async (req, res) => {
         res.status(500).json({ success: false, message: 'Failed to fetch events from the specified calendar' });
     }
 };
-
-
 
 // Route to add an event to a specific calendar
 export const createEventSpecific = async (req, res) => {
@@ -168,7 +173,6 @@ export const getTimeInEventsPerDay = async (req, res) => {
     const { calendarId, day } = req.params;
     
     try {
-        // Ensure day is a valid weekday name
         const weekdays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
         const dayIndex = weekdays.indexOf(day.toLowerCase());
         
@@ -255,5 +259,53 @@ export const getUserEvents = async (userEmail) => {
     } catch (error) {
         console.error("Error fetching user events:", error);
         return [];
+    }
+};
+
+export const getMeetingLink = async (req, res) => {
+    const { calendarId, eventId } = req.params;
+
+    try {
+        const eventResponse = await calendar.events.get({
+            calendarId,
+            eventId,
+        });
+
+        const eventData = eventResponse.data;
+        const meetingLink = eventData.hangoutLink || "No meeting link available for this event";
+
+        res.json({ success: true, meetingLink });
+
+    } catch (error) {
+        console.error("Error fetching meeting link:", error);
+        res.status(500).json({ success: false, message: "Failed to fetch meeting link" });
+    }
+};
+
+export const summarizeMeetingDescription = async (req, res) => {
+    const { calendarId, eventId } = req.params;
+
+    try {
+        const eventResponse = await calendar.events.get({
+            calendarId,
+            eventId,
+        });
+
+        const eventData = eventResponse.data;
+        const description = eventData.description || "No description provided";
+
+        const response = await openai.chat.completions.create({
+            model: "gpt-4",
+            messages: [{ role: "user", content: `Summarize the following meeting description in one sentence:\n\n${description}` }],
+            max_tokens: 50,
+        });
+
+        const summary = response.choices[0].message.content || "No summary generated";
+
+        res.json({ success: true, summary });
+
+    } catch (error) {
+        console.error("Error summarizing meeting description:", error);
+        res.status(500).json({ success: false, message: "Failed to summarize meeting description" });
     }
 };
