@@ -6,6 +6,7 @@ import scheduleRoutes from "../src/routes/scheduleRoutes.js";
 import aiRoutes from "../src/routes/aiRoutes.js";
 
 dotenv.config();
+dotenv.config();
 
 const app = express();
 app.use(express.json());
