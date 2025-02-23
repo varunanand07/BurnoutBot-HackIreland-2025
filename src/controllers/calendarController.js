@@ -8,6 +8,7 @@ dotenv.config();
 
 const calendar = google.calendar({ version: "v3", auth: oauth2Client });
 
+//OpenAI key needs to be added
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
 });
