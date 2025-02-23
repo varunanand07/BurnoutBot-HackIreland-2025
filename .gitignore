@@ -1,9 +1,3 @@
-<<<<<<< HEAD
 *.env
 node_modules
 tokens.json
-=======
-.env
-node_modules
-/src/config/firebaseServiceAccount.json
->>>>>>> 6b3677a (Added Firebase configuration files)
