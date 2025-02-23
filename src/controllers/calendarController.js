@@ -1,4 +1,3 @@
-// src/controllers/calendarController.js
 import { google } from "googleapis";
 import { oauth2Client } from "../api/auth.js";
 import moment from 'moment-timezone';
@@ -165,7 +164,6 @@ export const createEvent = async (req, res) => {
     }
 };
 
-
 export const getTimeInEventsPerDay = async (req, res) => {
     const { calendarId, day } = req.params;
     
@@ -204,5 +202,58 @@ export const getTimeInEventsPerDay = async (req, res) => {
     } catch (error) {
         console.error(`Error calculating total event time for calendar ${calendarId} on ${day}:`, error);
         res.status(500).json({ success: false, message: 'Failed to calculate total event time' });
+    }
+};
+
+export const getUserEvents = async (userEmail) => {
+    try {
+        const calendarListResponse = await calendar.calendarList.list();
+        console.log("Calendars:", calendarListResponse.data.items);
+        
+        const calendars = calendarListResponse.data.items || [];
+
+        if (!calendars.length) {
+            return { success: false, message: "No calendars found." };
+        }
+
+        let userEvents = [];
+        for (const cal of calendars) {
+            try {
+                const eventsResponse = await calendar.events.list({
+                    calendarId: cal.id,
+                    timeMin: new Date().toISOString(),
+                    maxResults: 50,
+                    singleEvents: true,
+                    orderBy: "startTime",
+                });
+
+
+                console.log(`Raw events for calendar ${cal.summary} (${cal.id}):`, eventsResponse.data.items);
+
+                const events = eventsResponse.data.items
+                    .filter(event => event.attendees?.some(a => a.email === userEmail)) // Filter user-specific events
+                    .map(event => ({
+                        calendarName: cal.summary,
+                        calendarId: cal.id,
+                        id: event.id,
+                        title: event.summary,
+                        start: event.start.dateTime || event.start.date,
+                        end: event.end.dateTime || event.end.date,
+                        location: event.location || "N/A",
+                        description: event.description || "No description",
+                    }));
+                console.log(events);
+                
+
+                userEvents.push(...events);
+            } catch (err) {
+                console.error(`Error fetching events for calendar ${cal.id}:`, err);
+            }
+        }
+
+        return userEvents;
+    } catch (error) {
+        console.error("Error fetching user events:", error);
+        return [];
     }
 };
