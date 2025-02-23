@@ -30,7 +30,7 @@ router.get('/auth/google/callback', async (req, res) => {
       throw new Error('No state (userId) received');
     }
 
-    storeTokens(state, tokens);
+    await storeTokens(state, tokens);
     
     res.send('Authentication successful! You can close this window and return to Slack.');
   } catch (error) {

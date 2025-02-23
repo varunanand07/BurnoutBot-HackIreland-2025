@@ -7,7 +7,7 @@ import slackApp from './slackbot.js';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const port = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(express.json());
@@ -15,14 +15,15 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/', authRoutes);
 
-(async () => {
-  await slackApp.start(PORT);
-  console.log('⚡️ Bolt app is running!');
-})();
-
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
+
+// Start the Slack app
+(async () => {
+  await slackApp.start();
+  console.log('⚡️ Slack Bolt app is running!');
+})();
 
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'OK' });

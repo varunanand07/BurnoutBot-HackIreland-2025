@@ -9,36 +9,64 @@ dotenv.config();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const TOKENS_FILE = path.join(__dirname, '../../tokens.json');
 
-const loadTokens = async () => {
-  try {
-    const data = await fs.readFile(TOKENS_FILE, 'utf8');
-    console.log('Loaded tokens from file:', data);
-    return JSON.parse(data);
-  } catch (error) {
-    if (error.code === 'ENOENT') {
-      await fs.writeFile(TOKENS_FILE, '{}');
-      return {};
-    }
-    console.error('Error loading tokens:', error);
-    return {};
-  }
-};
-
-const saveTokens = async (tokens) => {
-  try {
-    await fs.writeFile(TOKENS_FILE, JSON.stringify(tokens, null, 2));
-    console.log('Tokens saved successfully to:', TOKENS_FILE);
-  } catch (error) {
-    console.error('Error saving tokens:', error);
-    throw error;
-  }
-};
-
 export const oauth2Client = new google.auth.OAuth2(
   process.env.GOOGLE_CLIENT_ID,
   process.env.GOOGLE_CLIENT_SECRET,
   process.env.GOOGLE_REDIRECT_URI
 );
+
+export const getTokens = async (userId) => {
+  try {
+    const data = await fs.readFile(TOKENS_FILE, 'utf8');
+    const allTokens = JSON.parse(data);
+    const tokens = allTokens[userId];
+    
+    if (!tokens) {
+      console.log('No tokens found for user:', userId);
+      return null;
+    }
+
+    // Check if token needs refresh
+    if (tokens.expiry_date && tokens.expiry_date < Date.now()) {
+      console.log('Token expired, refreshing...');
+      oauth2Client.setCredentials({
+        refresh_token: tokens.refresh_token
+      });
+      const { credentials } = await oauth2Client.refreshAccessToken();
+      await storeTokens(userId, credentials);
+      return credentials;
+    }
+
+    return tokens;
+  } catch (error) {
+    console.error('Error getting tokens:', error);
+    return null;
+  }
+};
+
+export const storeTokens = async (userId, tokens) => {
+  try {
+    let allTokens = {};
+    try {
+      const data = await fs.readFile(TOKENS_FILE, 'utf8');
+      allTokens = JSON.parse(data);
+    } catch (error) {
+      // File doesn't exist or is invalid, start with empty object
+    }
+
+    allTokens[userId] = {
+      ...tokens,
+      expiry_date: Date.now() + (tokens.expires_in * 1000)
+    };
+
+    await fs.writeFile(TOKENS_FILE, JSON.stringify(allTokens, null, 2));
+    console.log('Tokens stored for user:', userId);
+    return true;
+  } catch (error) {
+    console.error('Error storing tokens:', error);
+    return false;
+  }
+};
 
 export const getAuthUrl = (slackUserId) => {
   return oauth2Client.generateAuthUrl({
@@ -55,34 +83,12 @@ export const getAuthUrl = (slackUserId) => {
 };
 
 export const handleGoogleCallback = async (code) => {
-  const { tokens } = await oauth2Client.getToken(code);
-  return tokens;
-};
-
-export const storeTokens = async (userId, tokens) => {
   try {
-    console.log('Storing tokens for user:', userId);
-    const allTokens = await loadTokens();
-    allTokens[userId] = tokens;
-    await saveTokens(allTokens);
-    console.log('Tokens stored successfully');
-    const verifyTokens = await loadTokens();
-    console.log('Verification - stored tokens:', verifyTokens[userId]);
-  } catch (error) {
-    console.error('Error in storeTokens:', error);
-    throw error;
-  }
-};
-
-export const getTokens = async (userId) => {
-  try {
-    console.log('Getting tokens for user:', userId);
-    const allTokens = await loadTokens();
-    const tokens = allTokens[userId];
-    console.log('Retrieved tokens for user:', tokens);
+    const { tokens } = await oauth2Client.getToken(code);
+    console.log('Received tokens from Google:', tokens);
     return tokens;
   } catch (error) {
-    console.error('Error in getTokens:', error);
-    return null;
+    console.error('Error getting tokens from Google:', error);
+    throw error;
   }
 };

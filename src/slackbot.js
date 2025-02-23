@@ -14,6 +14,9 @@ const app = new App({
   appToken: SLACK_CONFIG.appToken
 });
 
+app.error(async (error) => {
+  console.error('Slack app error:', error);
+});
 
 app.command('/calendar', async ({ command, ack, respond }) => {
   try {
@@ -64,13 +67,19 @@ app.action(/reschedule_meeting_.*/, async ({ ack, body, respond }) => {
         elements: [
           {
             type: "datepicker",
-            action_id: "reschedule_date",
-            initial_date: new Date().toISOString().split('T')[0]
+            placeholder: {
+              type: "plain_text",
+              text: "Select a date"
+            },
+            action_id: "reschedule_date"
           },
           {
             type: "timepicker",
-            action_id: "reschedule_time",
-            initial_time: "09:00"
+            placeholder: {
+              type: "plain_text",
+              text: "Select time"
+            },
+            action_id: "reschedule_time"
           }
         ]
       },
@@ -85,8 +94,8 @@ app.action(/reschedule_meeting_.*/, async ({ ack, body, respond }) => {
               emoji: true
             },
             style: "primary",
-            action_id: "reschedule_submit",
-            value: eventId
+            value: eventId,
+            action_id: "reschedule_submit"
           },
           {
             type: "button",
@@ -96,6 +105,7 @@ app.action(/reschedule_meeting_.*/, async ({ ack, body, respond }) => {
               emoji: true
             },
             style: "danger",
+            value: eventId,
             action_id: "reschedule_cancel"
           }
         ]
@@ -106,24 +116,28 @@ app.action(/reschedule_meeting_.*/, async ({ ack, body, respond }) => {
 
 const rescheduleState = new Map();
 
-app.action('reschedule_date', async ({ ack, body }) => {
+app.action('reschedule_date', async ({ ack, body, respond }) => {
   await ack();
+  console.log('Date picker action payload:', body);
   const selectedDate = body.actions[0].selected_date;
+  console.log('Selected date:', selectedDate);
   rescheduleState.set(`${body.user.id}_date`, selectedDate);
+  
+  // Verify storage
+  const storedDate = rescheduleState.get(`${body.user.id}_date`);
+  console.log('Stored date after setting:', storedDate);
 });
 
 app.action('reschedule_time', async ({ ack, body }) => {
   await ack();
+  console.log('Time picker action payload:', body);
   const selectedTime = body.actions[0].selected_time;
+  console.log('Selected time:', selectedTime);
   rescheduleState.set(`${body.user.id}_time`, selectedTime);
-});
-
-app.action('reschedule_cancel', async ({ ack, respond }) => {
-  await ack();
-  await respond({
-    text: "Rescheduling cancelled.",
-    replace_original: true
-  });
+  
+  // Verify storage
+  const storedTime = rescheduleState.get(`${body.user.id}_time`);
+  console.log('Stored time after setting:', storedTime);
 });
 
 app.action('reschedule_submit', async ({ ack, body, respond }) => {
@@ -131,10 +145,19 @@ app.action('reschedule_submit', async ({ ack, body, respond }) => {
     await ack();
     const userId = body.user.id;
     const eventId = body.actions[0].value;
+    
+    // Debug logging
+    console.log('Submit action - User ID:', userId);
+    console.log('Submit action - Event ID:', eventId);
+    console.log('All stored state:', Object.fromEntries(rescheduleState));
+    console.log('Stored date:', rescheduleState.get(`${userId}_date`));
+    console.log('Stored time:', rescheduleState.get(`${userId}_time`));
+    
     const selectedDate = rescheduleState.get(`${userId}_date`);
     const selectedTime = rescheduleState.get(`${userId}_time`);
 
     if (!selectedDate || !selectedTime) {
+      console.log('Missing date or time - Date:', selectedDate, 'Time:', selectedTime);
       await respond({
         text: "Please select both date and time before applying changes.",
         replace_original: false
@@ -171,12 +194,20 @@ app.action('reschedule_submit', async ({ ack, body, respond }) => {
       replace_original: true
     });
   } catch (error) {
-    console.error('Error rescheduling meeting:', error);
+    console.error('Error in reschedule_submit:', error);
     await respond({
       text: "❌ Sorry, there was an error rescheduling your meeting.",
       replace_original: false
     });
   }
+});
+
+app.action('reschedule_cancel', async ({ ack, respond }) => {
+  await ack();
+  await respond({
+    text: "Rescheduling cancelled.",
+    replace_original: true
+  });
 });
 
 app.action('schedule_break', async ({ ack, body, respond }) => {
