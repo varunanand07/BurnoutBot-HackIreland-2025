@@ -27,14 +27,25 @@ export const getTokens = async (userId) => {
     }
 
     // Check if token needs refresh
-    if (tokens.expiry_date && tokens.expiry_date < Date.now()) {
-      console.log('Token expired, refreshing...');
+    if (tokens.refresh_token && (tokens.expiry_date < Date.now() || !tokens.access_token)) {
+      console.log('Token expired or invalid, refreshing...');
       oauth2Client.setCredentials({
         refresh_token: tokens.refresh_token
       });
-      const { credentials } = await oauth2Client.refreshAccessToken();
-      await storeTokens(userId, credentials);
-      return credentials;
+      
+      try {
+        const { credentials } = await oauth2Client.refreshAccessToken();
+        console.log('Token refreshed successfully');
+        
+        // Preserve the refresh token as it might not be included in new credentials
+        credentials.refresh_token = credentials.refresh_token || tokens.refresh_token;
+        
+        await storeTokens(userId, credentials);
+        return credentials;
+      } catch (refreshError) {
+        console.error('Error refreshing token:', refreshError);
+        return null;
+      }
     }
 
     return tokens;
@@ -54,11 +65,12 @@ export const storeTokens = async (userId, tokens) => {
       // File doesn't exist or is invalid, start with empty object
     }
 
-    allTokens[userId] = {
-      ...tokens,
-      expiry_date: Date.now() + (tokens.expires_in * 1000)
-    };
+    // Ensure we have an expiry_date
+    if (!tokens.expiry_date && tokens.expires_in) {
+      tokens.expiry_date = Date.now() + (tokens.expires_in * 1000);
+    }
 
+    allTokens[userId] = tokens;
     await fs.writeFile(TOKENS_FILE, JSON.stringify(allTokens, null, 2));
     console.log('Tokens stored for user:', userId);
     return true;
