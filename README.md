@@ -76,8 +76,6 @@ FIREBASE_CREDENTIALS=your_firebase_config_json
  npm start
 ```
 
-5️⃣ **Deploy on a Cloud Platform** (e.g., Heroku, AWS Lambda, Vercel)
-
 ---
 
 ## 📈 Future Enhancements
@@ -115,8 +113,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 For questions, suggestions, or collaborations, reach out via:
-- **Email:** your-email@example.com
-- **GitHub Issues:** [Open an issue](https://github.com/your-username/BurnoutBot/issues)
+- **Email:** vanand@tcd.ie
+- **GitHub Issues:** [Open an issue](https://github.com/varunanand07/BurnoutBot/issues)
 
 ---
 
