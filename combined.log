@@ -1,0 +1,112 @@
+{"level":"info","message":"Server running on port 4001","service":"burnout-bot","timestamp":"2025-02-27T14:52:55.380Z"}
+{"ip":"::1","level":"info","message":"HEAD /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:04.063Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:22.836Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:22.850Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:22.863Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:22.882Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:22.894Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:22.903Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:22.913Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:22.924Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:22.935Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:22.945Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:22.964Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:22.978Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:22.989Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:22.999Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.006Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.016Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.024Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.034Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.042Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.051Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.059Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.069Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.078Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.086Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.095Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.103Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.112Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.120Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.129Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.138Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.149Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.158Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.168Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.177Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.186Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.202Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.211Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.221Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.231Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.242Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.251Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.259Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.267Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.275Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.284Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.292Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.301Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.310Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.323Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.337Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.352Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.363Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.374Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.383Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.391Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.400Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.408Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.417Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.425Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.441Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.453Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.461Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.470Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.478Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.487Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.496Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.504Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.512Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.521Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.530Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.539Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.548Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.556Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.564Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.573Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.583Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.592Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.600Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.608Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.618Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.630Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.639Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.648Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.658Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.674Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.687Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.696Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.706Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.715Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.728Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.737Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.747Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.755Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.764Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.772Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.783Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.796Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.806Z","userAgent":"curl/8.7.1"}
+{"ip":"::1","level":"info","message":"GET /health","service":"burnout-bot","timestamp":"2025-02-27T14:55:23.817Z","userAgent":"curl/8.7.1"}
+{"level":"info","message":"Server running on port 4001","service":"burnout-bot","timestamp":"2025-02-27T15:13:24.361Z"}
+{"auditLog":{"action":"CALENDAR_READ","details":{"calendarId":"primary","eventCount":1,"timeMax":"2025-03-06T23:59:59.050Z","timeMin":"2025-02-27T15:13:46.050Z"},"ipAddress":"N/A","timestamp":"2025-02-27T15:13:46.376Z","userAgent":"N/A","userId":"user-id"},"level":"info","message":"Audit log entry","service":"burnout-bot","timestamp":"2025-02-27T15:13:46.377Z"}
+{"auditLog":{"action":"COMMAND_EXECUTED","details":{"command":"/calendar","parameters":"week"},"ipAddress":"N/A","timestamp":"2025-02-27T15:13:46.615Z","userAgent":"N/A","userId":"U08EY137T89"},"level":"info","message":"Audit log entry","service":"burnout-bot","timestamp":"2025-02-27T15:13:46.619Z"}
+{"auditLog":{"action":"CALENDAR_READ","details":{"calendarId":"primary","eventCount":0,"timeMax":"2025-02-27T23:59:59.383Z","timeMin":"2025-02-27T15:14:13.383Z"},"ipAddress":"N/A","timestamp":"2025-02-27T15:14:13.667Z","userAgent":"N/A","userId":"user-id"},"level":"info","message":"Audit log entry","service":"burnout-bot","timestamp":"2025-02-27T15:14:13.668Z"}
+{"auditLog":{"action":"COMMAND_EXECUTED","details":{"command":"/workload","parameters":""},"ipAddress":"N/A","timestamp":"2025-02-27T15:14:13.836Z","userAgent":"N/A","userId":"U08EY137T89"},"level":"info","message":"Audit log entry","service":"burnout-bot","timestamp":"2025-02-27T15:14:13.836Z"}
+{"auditLog":{"action":"CALENDAR_READ","details":{"calendarId":"primary","eventCount":1,"timeMax":"2025-03-06T15:14:53.135Z","timeMin":"2025-02-27T15:14:53.135Z"},"ipAddress":"N/A","timestamp":"2025-02-27T15:14:53.425Z","userAgent":"N/A","userId":"user-id"},"level":"info","message":"Audit log entry","service":"burnout-bot","timestamp":"2025-02-27T15:14:53.426Z"}
+{"auditLog":{"action":"COMMAND_EXECUTED","details":{"command":"/workload","parameters":"week"},"ipAddress":"N/A","timestamp":"2025-02-27T15:14:53.600Z","userAgent":"N/A","userId":"U08EY137T89"},"level":"info","message":"Audit log entry","service":"burnout-bot","timestamp":"2025-02-27T15:14:53.600Z"}
+{"auditLog":{"action":"ACTION_TRIGGERED","details":{"action":"schedule_break"},"ipAddress":"N/A","timestamp":"2025-02-27T15:14:56.647Z","userAgent":"N/A","userId":"U08EY137T89"},"level":"info","message":"Audit log entry","service":"burnout-bot","timestamp":"2025-02-27T15:14:56.648Z"}
+{"auditLog":{"action":"CALENDAR_READ","details":{"calendarId":"primary","eventCount":0,"timeMax":"2025-02-27T23:59:59.673Z","timeMin":"2025-02-27T15:14:56.673Z"},"ipAddress":"N/A","timestamp":"2025-02-27T15:14:56.882Z","userAgent":"N/A","userId":"user-id"},"level":"info","message":"Audit log entry","service":"burnout-bot","timestamp":"2025-02-27T15:14:56.882Z"}
+{"auditLog":{"action":"ACTION_TRIGGERED","details":{"action":"schedule_break"},"ipAddress":"N/A","timestamp":"2025-02-27T15:15:03.463Z","userAgent":"N/A","userId":"U08EY137T89"},"level":"info","message":"Audit log entry","service":"burnout-bot","timestamp":"2025-02-27T15:15:03.464Z"}
+{"auditLog":{"action":"CALENDAR_READ","details":{"calendarId":"primary","eventCount":0,"timeMax":"2025-02-27T23:59:59.490Z","timeMin":"2025-02-27T15:15:03.490Z"},"ipAddress":"N/A","timestamp":"2025-02-27T15:15:03.763Z","userAgent":"N/A","userId":"user-id"},"level":"info","message":"Audit log entry","service":"burnout-bot","timestamp":"2025-02-27T15:15:03.763Z"}
